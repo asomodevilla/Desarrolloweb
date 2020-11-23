@@ -1,0 +1,23 @@
+*{
+    margin: 10px;
+    padding: 0px;
+}
+
+
+body{
+    background: rgb(41, 240, 41);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background: rgb(121, 37, 37);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,h2,h3{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body,p,ul,ol {
+    font-family: sans-serif;
+}

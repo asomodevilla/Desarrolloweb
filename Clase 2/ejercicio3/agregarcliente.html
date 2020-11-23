@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Vermicomposteras </title>
+        <link rel="stylesheet" href="hojacssestilos.css"/>
+    </head>
+
+<body>
+    <!---Encabezado---->
+    <header>
+        <h1>Vermi puente alto</h1>
+    </header>
+
+   <!---Menu---->
+   <ul>
+    <li><a href="negocio.html" title=""Inicio>Inicio</a></li>
+    <li><a href="Contenidos.html">Contenidos</a></li>
+    <li><a href="Contacto.html">Contacto</a></li>
+    <li><a href="agregarcliente.html">agregarcliente</a></li>
+    </ul>
+    <hr/>
+    <!----Registro de usuarios cliente formulario--->
+    <h2>Registro de usuario</h2>
+    <form>
+        <p>
+            <label for="nombre">Nombre: </label>
+            <input type="text" name="nombre" placeholder="Escriba su nombre..."/>
+        </p>
+        <p>
+            <label for="correo">Correo Electronico: </label>
+            <input type="text" name="correo" placeholder="Escriba su correo electronico..."/>
+        </p>
+        <p>
+            <label for="Telefono">Telefono: </label>
+            <input type="number" name="Telefono" placeholder="Escriba su n° de telefono..."/>
+        </p>
+        <p>
+            <label for="Mensaje">Mensaje: </label> <br/>
+            <textarea name="Mensaje" placeholder="Escribe tu Sugerencia aca..."cols="30" rows="5"></textarea>
+        </p>
+        <p>
+            <label for="tipo">Tipo de usuario</label> <br/>
+            <select name="tipo">
+                <option value="cliente">Cliente</option>
+                <option value="profesional">Profesional</option>
+                <option value="administrativo">Administrativo</option>
+            </select>
+        </p>
+        <input type="submit" value="Registrar usuario"/>
+
+   </form>
+   
+
+   
+    
+
+</body>
+
+</html>

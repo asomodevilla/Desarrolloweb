@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Información</title>
+    <link rel="icon" type="image/png" href="C:\Users\juani\Documents\JAVA desarrollo web\modulo 3 desarrollo web\Clase 1\Ejercicio grupal 1\ti.ico" />
+</head>
+<h4>Menu de inicio:</h4>
+<body>
+    <!---Menu---->
+    <ul>
+        <li><a href="index.html" title=""Inicio>Inicio</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+    <hr/>
+
+    <!---Encabezado--->   
+    <h1>(seudo registros de usuario para mas adelante)</h1> 
+
+    <!----Registro de usuarios formulario--->
+    <h2>Registro de usuario</h2>
+    <form>
+        <p>
+            <label for="nombre">Nombre: </label>
+            <input type="text" name="nombre" placeholder="Escriba su nombre..."/>
+        </p>
+        <p>
+            <label for="correo">Correo Electronico: </label>
+            <input type="text" name="correo" placeholder="Escriba su correo electronico..."/>
+        </p>
+        <p>
+            <label for="Telefono">Telefono: </label>
+            <input type="number" name="Telefono" placeholder="Escriba su n° de telefono..."/>
+        </p>
+        <p>
+            <label for="Mensaje">Mensaje: </label> <br/>
+            <textarea name="Mensaje" placeholder="Escribe tu Sugerencia aca..."cols="30" rows="5"></textarea>
+        </p>
+        <p>
+            <label for="tipo">Tipo de usuario</label> <br/>
+            <select name="tipo">
+                <option value="cliente">Cliente</option>
+                <option value="profesional">Profesional</option>
+                <option value="administrativo">Administrativo</option>
+            </select>
+        </p>
+        <input type="submit" value="Registrar usuario"/>
+
+
+</body>
+</html>
