@@ -137,7 +137,8 @@ ul,ol {
 }
 
 #tableRegistro{
-  position: relative;
+  position: sticky;
+  display:inline-block;
   top: 20px;
   }
 
@@ -250,4 +251,8 @@ ul,ol {
 
 button {
   align-items: center;
+}
+
+li {
+  color: white;
 }
