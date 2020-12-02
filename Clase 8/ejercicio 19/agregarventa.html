@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vermicomposteras</title>
+    <link rel="icon" type="image/png" href="lombriz.ico" />
+    <link rel="stylesheet" href="hojacssestilos.css" />
+
+    <script>
+        function validar() {
+
+            var errores = "";
+
+            var id = document.getElementById("txtid").value;
+            var vendedor = document.getElementById("txtnomvendedor").value;
+            var cantidad = document.getElementById("txtcantidad").value;
+
+            if (id == null || vendedor == null || cantidad == null || id.length == 0
+                || vendedor.length == 0 || cantidad.length == 0) {
+                errores += "Alguno de los campos no tiene datos<br/>";
+            }
+
+            if (isNaN(id)) {
+                errores += "El identificador no es un número<br/>";
+            }
+            else {
+                var idnum = parseInt(id);
+                if (idnum <= 0 || idnum > 1000) {
+                    errores += "El identificador no está dentro del rango esperado<br/>";
+                }
+            }
+
+            if (vendedor.length > 50) {
+                errores += "El nombre del vendedor tiene más de 50 caracteres<br/>";
+            }
+
+            if (isNaN(cantidad)) {
+                errores += "La cantidad no es un número<br/>";
+            }
+            else {
+                var cantidadnum = parseInt(cantidad);
+                if (cantidadnum <= 0 || cantidadnum > 1000) {
+                    errores += "La cantidad de artículos no está dentro del rango esperado<br/>";
+                }
+            }
+
+            if (errores == null || errores == "" || errores.length == 0) {
+                errores = "La validación no arrojó inconvenientes. Felicitaciones! ";
+            }
+
+            var divmensaje = document.getElementById("mensaje");
+            divmensaje.innerHTML = errores;
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <!---Encabezado---->
+    <header>
+        <h1>Vermi puente alto</h1>
+    </header>
+
+    <!---Menu---->
+    <ul>
+        <li><a href="negocio.html" title="" Inicio>Inicio</a></li>
+        <li><a href="Contenidos.html">Contenidos</a></li>
+        <li><a href="Contacto.html">Contacto</a></li>
+        <li><a href="ingreso.html">Ingreso</a></li>
+        <li><a href="agregarcliente.html">agregarcliente</a></li>
+        <li><a href="agregarventa.html">Agregar Venta</a></li>
+    </ul>
+    <hr />
+
+
+
+
+    <h1>Agregar Venta</h1>
+
+    <div id="mensaje"></div>
+
+    <form>
+        <table>
+            <tr>
+                <th>ID de venta: </th>
+                <td><input type="text" name="txtid" id="txtid"></td>
+            </tr>
+            <tr>
+                <th>Nombre de vendedor: </th>
+                <td><input type="text" name="txtnomvendedor" id="txtnomvendedor"></td>
+            </tr>
+            <tr>
+                <th>Cantidad de artículos: </th>
+                <td><input type="text" name="txtcantidad" id="txtcantidad"></td>
+            </tr>
+            <tr>
+                <td><input type="button" onclick="validar();" name="btnprocesar" id="btnprocesar"
+                        value="Validar formulario"></td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+
+</html>

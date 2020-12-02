@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Información</title>
+    <link rel="icon" type="image/png" href="ti.ico" />
+    <link rel="stylesheet" href="hojacssdeestilos.css" />
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <script>
+        $(function () {
+            $("#btn").on("click", function(){
+                $("#formulario").validate
+                    ({
+                        rules:
+                        {
+                            rut: { required: true, digits: true, minlength: 7, maxlength: 9 },
+                            Runcliente: { required: true, digits: true, minlength: 7, maxlength: 9 },
+                            Nombres: { required: true, minlength: 3, maxlength: 20 },
+                            Apellidos: { required: true, minlength: 3, maxlength: 20 },
+                            Telefono: { required: true, digits: true, minlength: 7, maxlength: 9 },
+                            Afp: { required: true, minlength: 3, maxlength: 10 },
+                            Prevision: { required: true, minlength: 6, maxlength: 6 },
+                            Direccion: { required: true, minlength: 10, maxlength: 50 },
+                            Comuna: { required: true, minlength: 10, maxlength: 20 },
+                            edad: { required: true, min: 18, max: 110 },
+
+                        },
+                        
+                        messages:
+                        { 
+                           rut: { required: 'el rut es requerido', digits: 'ingrese un digito valido', minlength: 'rut no valido', maxlength: 'rut no valido' },
+                           Runcliente: { required: 'el rut es requerido', digits: 'ingrese un digito valido', minlength: 'rut no valido', maxlength: 'rut no valido' },
+                           Nombres: { required: 'el Nombre es requerido', minlength: 'Nombre no valido', maxlength: 'Nombre no valido' },
+                           Apellidos: { required: 'el apellido es requerido', minlength: 'apellido no valido', maxlength: 'apellido no valido' },
+                           Telefono: { required: 'el Telefono es requerido',digits: 'ingrese un Telefono valido', minlength: 'Telefono no valido', maxlength: 'Telefono no valido' },
+                           Afp: { required: 'la afp es requerida', minlength: 'AFP no valida', maxlength: 'AFP no valida' },
+                           Prevision: { required: 'la Previsión es requerida', minlength: 'Previsión no valida', maxlength: 'Previsión no valida' },
+                           Direccion: { required: 'la dirección es requerida', minlength: 'dirección no valida', maxlength: 'dirección no valida' },
+                           Comuna: { required: 'la comuna es requerida', minlength: 'comuna no valida', maxlength: 'comuna no valida' },
+                           edad: { required: 'la edad es requerida', min: 'Debe ser mayor de 18 años', max: 'edad no valida' },
+                        }
+                    }
+                    );
+
+            });
+        });
+        
+    </script>
+</head>
+
+<body>
+    <form method="POST" id="formulario">
+        <P>
+            <label for="Buscar">Buscar por Rut: </label>
+            <input type="text" name="rut" placeholder="rut usuario..." />
+        </P>
+        <P>
+            <label for="Runcliente">Rut Cliente: </label>
+            <input type="text" name="Runcliente" placeholder="99.999.999-X" />
+        </P>
+        <p>
+            <label for="Nombres">Nombres: </label>
+            <input type="text" name="Nombres" placeholder="Escriba su nombre..." />
+        </p>
+        <p>
+            <label for="Apellidos">Apellidos: </label>
+            <input type="text" name="Apellidos" placeholder="Escriba su Apellidos..." />
+        </p>
+        <p>
+            <label for="Telefono">Telefono: </label>
+            <input type="number" name="Telefono" placeholder="999999999..." />
+        </p>
+        <p>
+            <label for="Afp">Afp: </label>
+            <input type="text" name="Afp" placeholder="nombre afp..." />
+        </p>
+        <p>
+            <label for="Prevision">Sistema de Salud</label> <br />
+            <select name="Prevision">
+                <option value="0">Eliga prevision</option>
+                <option value="fonasa">FONASA</option>
+                <option value="isapre">ISAPRE</option>
+            </select>
+        </p>
+        <p>
+            <label for="Direccion">Direccion: </label>
+            <input type="text" name="Direccion" placeholder="Direccion..." />
+        </p>
+        <p>
+            <label for="Comuna">Comuna: </label>
+            <input type="text" name="Comuna" placeholder="Comuna..." />
+        </p>
+        <p>
+            <label for="edad">edad: </label>
+            <input type="number" name="edad" placeholder="edad..." />
+        </p>
+
+
+        <input type="submit" value="Comfirmar Edición" id="btn" />
+
+
+    </form>
+
+    <form action="listadousuario.html">
+        <input type="submit" value="Inicio" />
+    </form>
+
+    <script>
+        $.cdn 
+    </script>
+
+</body>
+
+</html>
