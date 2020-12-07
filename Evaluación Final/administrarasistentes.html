@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Información</title>
+    <link rel="stylesheet" href="hojacssdeestilos.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
+    <script src="http://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+    </script>
+    <!--Script para dar formato a la tabla de asistentes-->
+    <script>
+
+        $(document).ready(function () {
+            $('#tbasistentes').DataTable({
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/1.10.22/i18n/Spanish.json'
+                }
+            });
+
+
+        });
+    </script>
+
+    <!--Funcion: que agrega el nuevo asistente dentro de la tabla y valida los datos-->
+    <script type="text/javascript">
+        function validar() {
+            var idasistente = document.getElementById("idasist").value;
+            var nombreasistente = document.getElementById("nombreasist").value;
+            var laedad = document.getElementById("edad").value;
+            var elmail = document.getElementById("mail").value;
+            var elfono = document.getElementById("fono").value;
+
+            if (idasistente == 0 || idasistente == null || idasistente == "" || idasistente > 10000) {
+                alert("no se ha asignado ID o esta fuera de rango")
+            } else {
+                if (nombreasistente.length <= 0 && nombreasistente.length >= 100) {
+                    alert("Ingrese correctamente el nombre")
+                } else {
+                    if (laedad < 0 || laedad > 150) {
+                        alert("Ingrese la edad correcta")
+                    } else {
+                        if (elmail.length < 0) {
+                            alert("ingrese email")
+                        } else {
+                            if ((elfono.substr(0, 4)) != "+569") {
+                                alert("el telefono debe empezar con el prefijo +569")
+                            } else {
+                                if (elfono.length != 12) {
+                                    alert("el telefono no es valido")
+                                } else {
+                                    alert("todos los campos requeridos son validos")
+                                    document.getElementById("tbbody").innerHTML += "<tr>"
+                                        + "<td>" + idasistente + "</td>"
+                                        + "<td>" + nombreasistente + "</td>"
+                                        + "<td>" + laedad + "</td>"
+                                        + "<td>" + elmail + "</td>"
+                                        + "<td>" + elfono + "</td>"
+                                        + "<td>" + '<input type="submit" value="Eliminar" name="modif">' +"</td>"
+                                        + "</tr>";
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+    </script>
+    </script>
+
+
+    <!---EStilo de la ventana emergente-->
+    <style>
+        .modal-contenido {
+            background-color: lightgray;
+            width: 300px;
+            padding: 10px 20px;
+            margin: 20% auto;
+            position: relative;
+        }
+
+        .modal {
+            background-color: rgba(0, 0, 0, .8);
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 1s;
+        }
+
+        #miModal:target {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .cerrarventana {
+            float: right;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="header">
+        <h1>Plataforma de Registro</h1>
+    </div>    
+    <hr/>
+    <!---Menu---->
+    <div class="row col-3 col-s-3 menu">
+        <h4>Menu de inicio:</h4>
+        <ul>
+            <li><a href="index.html" style="color:white;" title="Inicio">Inicio</a></li>
+            <li><a href="crearcapacitacion.html" style="color:white;">Crear Capacitación</a></li>
+            <li><a href="crearpago.html" style="color:white;">Crear Pago</a></li>
+            <li><a href="crearusuario.html" style="color:white;">Crear Usuario</a></li>
+            <li><a href="listarcapacitaciones.html" style="color:white;">Listado de Capacitaciones</a></li>
+            <li><a href="listadousuario.html" style="color:white;">Listado usuario</a></li>
+            <li><a href="listadoasesorias.html" style="color:white;">Listado Asesoria</a></li>
+            <li><a href="listadopago.html" style="color:white;">Listado Pagos</a></li>
+            <li><a href="listadovisitas.html" style="color:white;">Listado Visitas</a></li>
+            <li><a href="editarcliente.html" style="color:white;">Editar Cliente</a></li>
+            <li><a href="editaradministrativo.html" style="color:white;">Editar Administrativo</a></li>
+            <li><a href="editarprofesional.html" style="color:white;">Editar Profesional</a></li>
+            <li><a href="responderchecklist.html" style="color:white;">Editar Lista de Capacitaciones</a></li>
+            <li><a href="reportes.html" style="color:white;">Reportes</a></li>
+            <li><a href="ingreso.html" style="color:white;">Ingresos</a></li>
+        </ul>
+    </div>
+
+
+
+
+
+    <!--tabla de contenidos-->
+    <div class="row col-9 col-s-9 menu">
+    <table id="tbasistentes" class='display' style='width:100%' border="1">
+        <thead>
+            <tr>
+                <th>ID de Asistente</th>
+                <th>Nombre de Asistente</th>
+                <th>Edad</th>
+                <th>Correo Electronico</th>
+                <th>Telefono</th>
+                <th>Eliminar Asistente</th>
+            </tr>
+        </thead>
+        <tbody id="tbbody">
+            <tr>
+                <td>1</td>
+                <td>Cristiano Ronaldo</td>
+                <td>28</td>
+                <td>Cristiano@cristiano.com</td>
+                <td>+56946917415</td>
+                <td><input type="submit" value="Eliminar" name="modif"></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Edson Arantes</td>
+                <td>27</td>
+                <td>Edson@Edson.com</td>
+                <td>+56948517415</td>
+                <td><input type="submit" value="Eliminar" name="modif"></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Diego Armando</td>
+                <td>60</td>
+                <td>diego@diego.com</td>
+                <td>+56948485748</td>
+                <td><input type="submit" value="Eliminar" name="modif"></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>leonel messy</td>
+                <td>29</td>
+                <td>leonel@leonel.com</td>
+                <td>+56947458416</td>
+                <td><input type="submit" value="Eliminar" name="modif"></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Zinedine Zidane</td>
+                <td>38</td>
+                <td>Zinedine@Zinedine.com</td>
+                <td>+56978412548</td>
+                <td><input type="submit" value="Eliminar" name="modif"></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Marcelo Salas</td>
+                <td>43</td>
+                <td>Marcelo@Marcelo.com</td>
+                <td>+56974512549</td>
+                <td><input type="submit" value="Eliminar" name="modif"></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Ivan Zamorano</td>
+                <td>42</td>
+                <td>Ivan@Ivan.com</td>
+                <td>+56978413546</td>
+                <td><input type="submit" value="Eliminar" name="modif"></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Julio cesar</td>
+                <td>59</td>
+                <td>Julio@Julio.com</td>
+                <td>+56974135845</td>
+                <td><input type="submit" value="Eliminar" name="modif"></td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Miguel Cotto</td>
+                <td>31</td>
+                <td>Miguel@Miguel.com</td>
+                <td>+56998541247</td>
+                <td><input type="submit" value="Eliminar" name="modif"></td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Rocky Marciano</td>
+                <td>48</td>
+                <td>Rocky@Rocky.com</td>
+                <td>+56978413546</td>
+                <td><input type="submit" value="Eliminar" name="modif"></td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Nicolino Loche</td>
+                <td>35</td>
+                <td>Nicolino@Nicolino.com</td>
+                <td>+56978541254</td>
+                <td><input type="submit" value="Eliminar" name="modif"></td>
+            </tr>
+        </tbody>
+
+
+    </table>
+</div>
+    <!--Ventana Emergente-->
+
+    <div id="miModal" class="modal">
+        <div class="modal-contenido">
+            <a href="#" class="cerrarventana">X</a>
+            <br><br><br>
+            <form id="formulario" method="POST">
+
+                <table>
+                    <tr>
+                        <th>
+                            <label for="idasist">ID de Asistente</label>
+                        </th>
+                        <td>
+                            <input type="number" placeholder="N° ID..." name="idasist" id="idasist">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="nombreasist">Nombre de Asistente</label>
+                        </th>
+                        <td>
+                            <input type="text" placeholder="Escriba su nombre..." name="nombreasist" id="nombreasist">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="edad">Edad</label>
+                        </th>
+                        <td>
+                            <input type="number" placeholder="edad..." name="edad" id="edad">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="mail">Correo Electronico</label>
+                        </th>
+                        <td>
+                            <input type="email" placeholder="Email..." name="mail" id="mail">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="fono">Telefono</label>
+                        </th>
+                        <td>
+                            <input type="text" placeholder="Telefono..." name="fono" id="fono">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="fechayhora">Fecha y hora </label>
+                        </th>
+                        <td>
+                            <select id="fechayhora" name="fechayhora">
+                                <option></option>
+                                <option value="fechayhora1">11/05/2020 09:00hrs am Cliente 1</option>
+                                <option value="fechayhora2">26/06/2020 11:15hrs am Cliente 2</option>
+                                <option value="fechayhora3">28/08/2020 14:00hrs pm Clinete 3</option>
+                            </select>
+                        </td>
+
+                    </tr>
+
+
+
+                </table>
+                <br>
+                <input type="button" id="btn" value="Registrar" onclick="validar();" />
+            </form>
+
+
+        </div>
+    </div>
+
+
+    <!-- Boton de Ventana emergente-->
+    <br>
+    <a href="#miModal"><input type="button" value="Ingresar nuevo asistente"></a>
+    <br> <br>
+
+
+</body>
+
+</html>
