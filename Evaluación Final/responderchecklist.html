@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Listas de chequeos de visitas</title>
     <link rel="icon" type="image/png" href="ti.ico" />
-    <link rel="stylesheet" href="hojacssdeestilos.css"/>
+    <link rel="stylesheet" href="hojacssdeestilos.css" />
     <script type="text/javascript">
 
         function contar() {
@@ -39,78 +39,98 @@
 </head>
 
 <body>
+    <div class="header">
+        <h1>Plataforma de Registro</h1>
+    </div>
+    <hr />
+    <!---Menu---->
+    <div class="row col-3 col-s-3 menu">
+        <h4>Menu de inicio:</h4>
+        <ul>
+            <li><a href="index.html" style="color:white;" title="Inicio">Inicio</a></li>
+            <li><a href="crearcapacitacion.html" style="color:white;">Crear Capacitación</a></li>
+            <li><a href="listarcapacitaciones.html" style="color:white;">Listado de Capacitaciones</a></li>
+            <li><a href="listadousuario.html" style="color:white;">Listado usuario</a></li>
+            <li><a href="crearusuario.html" style="color:white;">Crear usuario</a></li>
+            <li><a href="editarcliente.html" style="color:white;">Editar Cliente</a></li>
+            <li><a href="editaradministrativo.html" style="color:white;">Editar Administrativo</a></li>
+            <li><a href="editarprofesional.html" style="color:white;">Editar Profesional</a></li>
+            <li><a href="responderchecklist.html" style="color:white;">Editar Lista de Capacitaciones</a></li>
+        </ul>
+    </div>
 
-    <form id="form1" method="post" action="#">
+    <div class="row col-3 col-s-3">
+        <form id="form1" method="post" action="#">
 
-        <table border="1">
-            <tr>
-                <th colspan="6">Visitas</th>
-            </tr>
-            <tr>
-                <th>ID de Chequeo</th>
-                <th>Fecha de Chequeo</th>
-                <th>Hora de Chequeo</th>
-                <th>Rut del cliente</th>
-                <th>Nombre de Cliente</th>
-                <th>Chequeo Visita</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>12-12-2012</td>
-                <td>13:56</td>
-                <td>79587210-8</td>
-                <td id="chk0">Minera Escondida</td>
-                <td><input type="checkbox" name="checkbox"></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>13-09-2012</td>
-                <td>15:56</td>
-                <td>96.790.240-3</td>
-                <td id="chk1">Mina los Pelambres</td>
-                <td><input type="checkbox" name="checkbox"></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>23-11-2020</td>
-                <td>18:00</td>
-                <td>96439000-2</td>
-                <td id="chk2">Walmart</td>
-                <td><input type="checkbox" name="checkbox"></td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>23-11-2020</td>
-                <td>18:00</td>
-                <td>96439000-2</td>
-                <td id="chk3">Walmart</td>
-                <td><input type="checkbox" name="checkbox"></td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>21-07-2020</td>
-                <td>17:00</td>
-                <td>93834000-5</td>
-                <td id="chk4">Cencosud</td>
-                <td><input type="checkbox" name="checkbox"></td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>19-11-2020</td>
-                <td>15:00</td>
-                <td>93767000-1</td>
-                <td id="chk5">FASA</td>
-                <td><input type="checkbox" name="checkbox"></td>
-            </tr>
-        </table>
+            <table border="1">
+                <tr>
+                    <th colspan="6">Visitas</th>
+                </tr>
+                <tr>
+                    <th>ID de Chequeo</th>
+                    <th>Fecha de Chequeo</th>
+                    <th>Hora de Chequeo</th>
+                    <th>Rut del cliente</th>
+                    <th>Nombre de Cliente</th>
+                    <th>Chequeo Visita</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>12-12-2012</td>
+                    <td>13:56</td>
+                    <td>79587210-8</td>
+                    <td id="chk0">Minera Escondida</td>
+                    <td><input type="checkbox" name="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>13-09-2012</td>
+                    <td>15:56</td>
+                    <td>96.790.240-3</td>
+                    <td id="chk1">Mina los Pelambres</td>
+                    <td><input type="checkbox" name="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>23-11-2020</td>
+                    <td>18:00</td>
+                    <td>96439000-2</td>
+                    <td id="chk2">Walmart</td>
+                    <td><input type="checkbox" name="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>23-11-2020</td>
+                    <td>18:00</td>
+                    <td>96439000-2</td>
+                    <td id="chk3">Walmart</td>
+                    <td><input type="checkbox" name="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>21-07-2020</td>
+                    <td>17:00</td>
+                    <td>93834000-5</td>
+                    <td id="chk4">Cencosud</td>
+                    <td><input type="checkbox" name="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>19-11-2020</td>
+                    <td>15:00</td>
+                    <td>93767000-1</td>
+                    <td id="chk5">FASA</td>
+                    <td><input type="checkbox" name="checkbox"></td>
+                </tr>
+            </table>
 
-        <input type="button" name="Submit" value="Listar chequeados" onClick="contar();">
-        <input type="button" name="Submit" value="Limpiar listado" onClick="location.reload()">
-    </form>
+            <input type="button" name="Submit" value="Listar chequeados" onClick="contar();">
+            <input type="button" name="Submit" value="Limpiar listado" onClick="location.reload()">
+        </form>
 
-        
+    </div>
 
-    <Div>
+    <Div class="row col-12 col-s-12">
         <ul id="demo">
 
 
