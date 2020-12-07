@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Pago</title>
+    <link rel="icon" type="image/png" href="ti.ico" />
+    <link rel="stylesheet" href="hojacssdeestilos.css" />
+    <script type="text/javascript" src="funciones.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Plataforma de Registro</h1>
+    </div>    
+    <hr/>
+        <!---Menu---->
+        <div class="row col-3 col-s-3 menu">
+            <h4>Menu de inicio:</h4>
+            <ul>
+                <li><a href="index.html" style="color:white;" title="Inicio">Inicio</a></li>
+                <li><a href="crearcapacitacion.html" style="color:white;">Crear Capacitación</a></li>
+                <li><a href="listarcapacitaciones.html" style="color:white;">Listado de Capacitaciones</a></li>
+                <li><a href="listadousuario.html" style="color:white;">Listado usuario</a></li>
+                <li><a href="crearusuario.html" style="color:white;">Crear usuario</a></li>
+                <li><a href="editarcliente.html" style="color:white;">Editar Cliente</a></li>
+                <li><a href="editaradministrativo.html" style="color:white;">Editar Administrativo</a></li>
+                <li><a href="editarprofesional.html" style="color:white;">Editar Profesional</a></li>
+                <li><a href="responderchecklist.html" style="color:white;">Editar Lista de Capacitaciones</a></li>
+            </ul>
+        </div>
+
+    <div class="row col-6 col-s-6 menu">
+    <form>
+        <h2>Agregar pago Cliente</h2>
+        <!--Monto-->
+        <label for="epago">Monto: </label>
+        <input type="text" name="epago" id="monto" placeholder="$..." />
+        <br><br>
+        <!--mes-->
+        <label for="emes">Mes: </label>
+        <select name="emes" id="mes">
+            <option value="elige">Elige mes</option>
+            <option value="enero">enero</option>
+            <option value="febrero">febrero</option>
+            <option value="marzo">marzo</option>
+            <option value="abril">abril</option>
+            <option value="junio">junio</option>
+            <option value="julio">julio</option>
+            <option value="agosto">agosto</option>
+            <option value="septiembre">septiembre</option>
+            <option value="octubre">octubre</option>
+            <option value="noviembre">noviembre</option>
+            <option value="diciembre">diciembre</option>
+        </select>
+        <!--año-->
+        <label for="eaño">Año: </label>
+        <select class="eaño"  id="año" onclick="selectaño();">
+        <option value="elige año">Elige año</option>
+        </select>
+        <br><br>
+        <!--rut cliente-->
+        <label for="Rut cliente">Rut cliente: </label>
+        <input type="text" name="Rut cliente" id="rut" placeholder="99999999-9..." />
+        <br>
+        <!--nombre-->
+        <label for="Nombre Cliente">Nombre Cliente: </label>
+        <input type="text" name="Nombre Cliente" id="cliente" placeholder="Nombre Cliente..." />
+        <br>
+        <!--botones-->
+        <input type="submit" value="agregar pago"/>
+        <input type="submit" onclick="validarpago();" value="validar pago"/>
+
+    </form>
+    </div>
+    <div class="row col-3 col-s-3 menu"></div>
+    <table>
+        <tr>
+            <p>Fecha actual:</p>
+        </tr>
+        <tr>
+            <script>
+                var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+                var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
+                var f = new Date();
+                document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
+            </script>
+        </tr>
+    </table>
+
+</div>
+</body>
+
+</html>
