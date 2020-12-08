@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Información</title>
+    <link rel="icon" type="image/png" href="ti.ico" />
+    <link rel="stylesheet" href="hojacssdeestilos.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        input.error,
+        select.error,
+        textarea.error {
+            border: 3px solid red;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+    <script>
+        $.validator.addMethod("valueNotEquals", function (value, element, arg) {
+            return arg !== value;
+        }, "Value must not equal arg.");
+        $(document).ready(function () {
+            $("#formulario").validate({
+
+                rules:
+                {
+                    idcliente: { required: true, digits: true, min: 1, max: 9999 },
+                    fecha: { required: true, dpDate: true },
+                    hora: { required: true },
+                    lugar: { required: true, minlength: 1, maxlength: 149 },
+                    origen: { required: true, maxlength: 100 },
+                    cliente: { valueNotEquals: "default" },
+                    consecuencias: { maxlength: 100 }
+                },
+
+                messages:
+                {
+                    idcliente: { required: 'El ID es requerido', digits: 'ingrese valor entre 0 y 9999', min: 'ingrese numero mayor a 0', max: 'ingrese numero menor a 10000' },
+                    fecha: { required: 'La fecha es requerida' },
+                    hora: { required: 'La hora es requerida' },
+                    lugar: { required: 'El lugar es requerido', maxlength: 'Solo admite 149 caracteres' },
+                    origen: { required: 'El origen es requerido', maxlength: 'Solo admite 100 caracteres' },
+                    cliente: { valueNotEquals: "Elija una Cliente" },
+                    consecuencias: { maxlength: 'Solo admite 100 caracteres' }
+                },
+
+            });
+
+            $("#fecha").datepicker(
+                {
+                    dateFormat: "yy-mm-dd",
+                    changeMonth: true,
+                    changeYear: true
+                });
+
+            if ($('#formulario').valid()) { alert("no valido"); }
+            // else {    alert("si");
+
+            else {
+                document.getElementById("mostrarid").innerHTML += "<td>" + idaciidente + "</td>";
+                document.getElementById("mostrarfecha").innerHTML += "<td>" + fechaacci + "</td>";
+                document.getElementById("mostrarhora").innerHTML += "<td>" + horacci + "</td>";
+                document.getElementById("mostrarlugar").innerHTML += "<td>" + lugar + "</td>";
+                document.getElementById("mostrarorigen").innerHTML += "<td>" + origen + "</td>";
+                document.getElementById("mostrarcliente").innerHTML += "<td>" + cliente + "</td>";
+                document.getElementById("mostrarconsecuencias").innerHTML += "<td>" + consecuencias + "</td>";
+                document.getElementById("formlistacci").reset();
+            }
+        });
+    </script>
+
+    <!-- <script>
+        function agregartabla() {
+
+            if (!$('#formulario').valid()) { alert("no valido"); }
+            else {
+                alert("si");
+            document.getElementById("demo").innerHTML += "<li>" + document.getElementById("idcliente"); + "</li>";
+                // var fecha = document.getElementById("fecha");
+                // var hora = document.getElementById("hora");
+                // var lugar = document.getElementById("lugar");
+                // var origen = document.getElementById("origen");
+                // var cliente = document.getElementById("cliente");
+                // var consecuencias = document.getElementById("consecuencias");
+                // document.getElementById("tbbody").innerHTML += "<tr>"
+                //     + "<td>" + idasistente + "</td>"
+                //     + "<td>" + nombreasistente + "</td>"
+                //     + "<td>" + laedad + "</td>"
+                //     + "<td>" + elmail + "</td>"
+                //     + "<td>" + elfono + "</td>"
+                //     + "<td>" + '<input type="submit" value="Eliminar" name="modif">' + "</td>"
+            }
+        }
+    </script> -->
+
+
+</head>
+
+<body>
+    <form method="POST" action="" id="formulario">
+        <P>
+            Identificador Cliente:<input type="text" name="idcliente" id="idcliente" placeholder="Id Cliente..." />
+        </P>
+        <P>
+            Fecha Accidente:<input type="text" name="fecha" id="fecha" readonly placeholder="01/01/2000" />
+        </P>
+        <p>
+            Hora:<input type="time" name="hora" id="hora" placeholder="12:00" />
+        </p>
+        <p>
+            Lugar:<input type="text" name="lugar" id="lugar" placeholder="Region Metropolitana..." />
+        </p>
+        <p>
+            Origen:<input type="text" name="origen" id="origen" placeholder="Lugar de origen" />
+        </p>
+        <p>
+            Cliente:
+            <select name="cliente" id="cliente">
+                <option value="default">Eliga Cliente</option>
+                <option value="Minera Escondida">Minera Escondida</option>
+                <option value="Minera Los Pelambres">Minera Los Pelambres</option>
+                <option value="Walmart">Walmart</option>
+                <option value="Cencosud">Cencosud</option>
+                <option value="FASA">FASA</option>
+                <option value="Codelco">Codelco</option>
+                <option value="Cruz Verde">Cruz Verde</option>
+            </select>
+        </p>
+        <p>
+            Consecuencias:<input type="text" name="consecuencias" id="consecuencias" placeholder="Consecuencias..." />
+        </p>
+        <input type="button" id="btn" value="Ingresar" onclick="validar();" />
+        <!-- <input type="submit" value="Ingresar"/> -->
+    </form>
+
+    <table id="tbasistentes" class='display' style='width:100%' border="1">
+        <thead>
+            <tr>
+                <th>Identificador Cliente</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Lugar</th>
+                <th>Origen</th>
+                <th>Cliente</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+
+                <td id="mostrarid"></td>
+                <td id="mostrarfecha"></td>
+                <td id="mostrarhora"></td>
+                <td id="mostrarlugar"></td>
+                <td id="mostrarorigen"></td>
+                <td id="mostrarcliente"></td>
+                <td id="mostrarconsecuencias"></td>
+
+            </tr>
+
+        </tbody>
+    </table>
+
+
+
+
+</body>
+
+</html>
