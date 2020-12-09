@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Información</title>
+    <title>Listado de Accidentes</title>
     <link rel="icon" type="image/png" href="ti.ico" />
     <link rel="stylesheet" href="hojacssdeestilos.css" />
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -30,7 +30,7 @@
                 rules:
                 {
                     idcliente: { required: true, digits: true, min: 1, max: 9999 },
-                    fecha: { required: true, dpDate: true },
+                    fecha: { required: true, },
                     hora: { required: true },
                     lugar: { required: true, minlength: 1, maxlength: 149 },
                     origen: { required: true, maxlength: 100 },
@@ -58,62 +58,82 @@
                     changeYear: true
                 });
 
-            if ($('#formulario').valid()) { alert("no valido"); }
-            // else {    alert("si");
 
-            else {
-                document.getElementById("mostrarid").innerHTML += "<td>" + idaciidente + "</td>";
-                document.getElementById("mostrarfecha").innerHTML += "<td>" + fechaacci + "</td>";
-                document.getElementById("mostrarhora").innerHTML += "<td>" + horacci + "</td>";
-                document.getElementById("mostrarlugar").innerHTML += "<td>" + lugar + "</td>";
-                document.getElementById("mostrarorigen").innerHTML += "<td>" + origen + "</td>";
-                document.getElementById("mostrarcliente").innerHTML += "<td>" + cliente + "</td>";
-                document.getElementById("mostrarconsecuencias").innerHTML += "<td>" + consecuencias + "</td>";
-                document.getElementById("formlistacci").reset();
-            }
+        });
+        $(function () {
+            $("#btn").on("click", function () {
+                if ($('#formulario').valid()) {
+                    alert("Registro Valido");
+                    var idcliente = document.getElementById("idcliente").value;
+                    var fecha = document.getElementById("fecha").value;
+                    var hora = document.getElementById("hora").value;
+                    var lugar = document.getElementById("lugar").value;
+                    var origen = document.getElementById("origen").value;
+                    var cliente = document.getElementById("cliente").value;
+                    var consecuencias = document.getElementById("consecuencias").value;
+
+                    document.getElementById("tbbody").innerHTML += "<tr>"
+                        + "<td>" + idcliente + "</td>"
+                        + "<td>" + fecha + "</td>"
+                        + "<td>" + lugar + "</td>"
+                        + "<td>" + origen + "</td>"
+                        + "<td>" + cliente + "</td>"
+                        + "<td>" + consecuencias + "</td>"
+                        + "</tr>";
+
+                }
+
+            });
         });
     </script>
-
-    <!-- <script>
-        function agregartabla() {
-
-            if (!$('#formulario').valid()) { alert("no valido"); }
-            else {
-                alert("si");
-            document.getElementById("demo").innerHTML += "<li>" + document.getElementById("idcliente"); + "</li>";
-                // var fecha = document.getElementById("fecha");
-                // var hora = document.getElementById("hora");
-                // var lugar = document.getElementById("lugar");
-                // var origen = document.getElementById("origen");
-                // var cliente = document.getElementById("cliente");
-                // var consecuencias = document.getElementById("consecuencias");
-                // document.getElementById("tbbody").innerHTML += "<tr>"
-                //     + "<td>" + idasistente + "</td>"
-                //     + "<td>" + nombreasistente + "</td>"
-                //     + "<td>" + laedad + "</td>"
-                //     + "<td>" + elmail + "</td>"
-                //     + "<td>" + elfono + "</td>"
-                //     + "<td>" + '<input type="submit" value="Eliminar" name="modif">' + "</td>"
-            }
-        }
-    </script> -->
 
 
 </head>
 
 <body>
+    <div class="header">
+        <h1>Plataforma de Registro</h1>
+    </div>
+    <hr />
+    <!---Menu---->
+    <div class="row col-3 col-s-3 menu">
+        <h4>Menu de inicio:</h4>
+        <ul>
+            <li><a href="index.html" style="color:white;" title="Inicio">Inicio</a></li>
+            <li><a href="administrarasistentes.html" style="color:white;">Administrar Asistentes</a></li>
+            <li><a href="contacto.html" style="color:white;">Contacto</a></li>
+            <li><a href="crearcapacitacion.html" style="color:white;">Crear Capacitación</a></li>
+            <li><a href="crearpago.html" style="color:white;">Crear Pago</a></li>
+            <li><a href="crearusuario.html" style="color:white;">Crear Usuario</a></li>
+            <li><a href="listarcapacitaciones.html" style="color:white;">Listado de Capacitaciones</a></li>
+            <li><a href="listadousuario.html" style="color:white;">Listado usuario</a></li>
+            <li><a href="listadoasesorias.html" style="color:white;">Listado Asesoria</a></li>
+            <li style="background-color: green;"> Listado de Accidentes </li>
+            <li><a href="listadopago.html" style="color:white;">Listado Pagos</a></li>
+            <li><a href="listadovisitas.html" style="color:white;">Listado Visitas</a></li>
+            <li><a href="editarcliente.html" style="color:white;">Editar Cliente</a></li>
+            <li><a href="editaradministrativo.html" style="color:white;">Editar Administrativo</a></li>
+            <li><a href="editarprofesional.html" style="color:white;">Editar Profesional</a></li>
+            <li><a href="responderchecklist.html" style="color:white;">Editar Lista de Capacitaciones</a></li>
+            <li><a href="reportes.html" style="color:white;">Reportes</a></li>
+        </ul>
+    </div>
+
+
     <form method="POST" action="" id="formulario">
+
+        <h2>Ingrese Registro de Accidentes</h2>
         <P>
-            Identificador Cliente:<input type="text" name="idcliente" id="idcliente" placeholder="Id Cliente..." />
+            Identificador Cliente:<input type="text" name="idcliente" id="idcliente" placeholder="Id Cliente" />
         </P>
         <P>
-            Fecha Accidente:<input type="text" name="fecha" id="fecha" readonly placeholder="01/01/2000" />
+            Fecha Accidente:<input type="date" name="fecha" id="fecha" readonly placeholder="01/01/2000" />
         </P>
         <p>
             Hora:<input type="time" name="hora" id="hora" placeholder="12:00" />
         </p>
         <p>
-            Lugar:<input type="text" name="lugar" id="lugar" placeholder="Region Metropolitana..." />
+            Lugar:<input type="text" name="lugar" id="lugar" placeholder="Region Metropolitana" />
         </p>
         <p>
             Origen:<input type="text" name="origen" id="origen" placeholder="Lugar de origen" />
@@ -132,10 +152,10 @@
             </select>
         </p>
         <p>
-            Consecuencias:<input type="text" name="consecuencias" id="consecuencias" placeholder="Consecuencias..." />
+            Consecuencias:<input type="text" name="consecuencias" id="consecuencias"
+                placeholder="Ingrese las consecuencias" />
         </p>
-        <input type="button" id="btn" value="Ingresar" onclick="validar();" />
-        <!-- <input type="submit" value="Ingresar"/> -->
+        <input type="button" id="btn" class="btn" value="Ingresar" id="btn" />
     </form>
 
     <table id="tbasistentes" class='display' style='width:100%' border="1">
@@ -149,26 +169,26 @@
                 <th>Cliente</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="tbbody">
 
             <tr>
 
-                <td id="mostrarid"></td>
-                <td id="mostrarfecha"></td>
-                <td id="mostrarhora"></td>
-                <td id="mostrarlugar"></td>
-                <td id="mostrarorigen"></td>
-                <td id="mostrarcliente"></td>
-                <td id="mostrarconsecuencias"></td>
+                <td id="midcliente"></td>
+                <td id="mfecha"></td>
+                <td id="mhora"></td>
+                <td id="mlugar"></td>
+                <td id="morigen"></td>
+                <td id="mcliente"></td>
+                <td id="mconsecuencias"></td>
 
             </tr>
 
         </tbody>
+
+
+
+
     </table>
-
-
-
-
 </body>
 
 </html>
